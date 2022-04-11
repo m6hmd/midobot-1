@@ -14,13 +14,23 @@ logger.setLevel(logging.DEBUG)
 w = ['1', "2","3","4",'5', "6","7","8",'9', "0","q","w",'e', "r","t","y",'u', "i","o","p",'a', "s","d","f","g","h",'j', "k","l","z",'x', "c","v","b",'n', "m"]
 @bot.message_handler(content_types=["text"])
 def gen(message):
-    if "*" in message.text:
-        word = message.text
-        m = ''
-        a = []
-        for i in w:
-            a.append(word.replace("*", i) + "\n")
-        bot.send_message(message.chat.id, m.join(a))
+    if "/" not in message.text:
+        z = message.text[0]
+        n = len(message.text)
+        n2 = n - 1
+        lists = []
+        for n in range(n):
+            list = []
+            for i in range(n2):
+                (list.append(z))
+            list.insert(n, '*')
+            lists.append("".join(list))
+        for word in lists:
+            m = ''
+            a = []
+            for i in w:
+                a.append(word.replace("*", i) + "\n")
+            bot.send_message(message.chat.id, m.join(a))
     else:
         bot.send_message(message.chat.id, "Send Test Like : z*zzz")
    
